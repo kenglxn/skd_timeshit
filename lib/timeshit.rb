@@ -1,29 +1,26 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'commander'
+require 'csv'
+require 'thor'
 require_relative 'timeshit/version'
-require_relative 'timeshit/commands'
 
-module Timeshit
-  class Runner
-    include Commander::Methods
+class Timeshit < Thor
+  CSV_OPTS = {
+    col_sep: ';',
+    quote_char:'"',
+    headers: true,
+    force_quotes: true,
+    header_converters: :symbol
+  }.freeze
 
-    def run
-      program :name, 'timeshit'
-      program :version, '0.0.1'
-      program :description, 'Chomps down skd csv and spits out something useful'
+  desc "read FILE", "read csv file"
+  def read(filename)
 
-      command :read do |c|
-        c.syntax = 'timeshit read <file.csv> [options]'
-        c.summary = ''
-        c.description = ''
-        c.example 'read csv export and output something useful', 'timeshit read export.csv'
-        c.option '--some-switch', 'Some switch that does something'
-        c.when_called Timeshit::Commands::Read
+    CSV.open(filename, 'r:bom|utf-8', CSV_OPTS) do |csv|
+      csv.each do |row|
+        p row.inspect
       end
-
-      run!
     end
   end
 end
