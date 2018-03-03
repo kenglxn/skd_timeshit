@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'csv'
+require 'thor'
+
+module Timeshit
+  class CLI < Thor
+    CSV_OPTS = {
+      col_sep: ';',
+      quote_char:'"',
+      headers: true,
+      force_quotes: true,
+      header_converters: :symbol
+    }.freeze
+
+    option :filter
+    desc "read FILE", "read csv file"
+    def read(filename)
+      filter = options[:filter]
+
+      CSV.open(filename, 'r:bom|utf-8', CSV_OPTS) do |csv|
+        csv.each do |row|
+          code = row[:dimensjon_4]
+          filtered_out = filter && !code.include?(filter)
+
+          next if code.empty? || filtered_out
+
+          hrs = row[:sum].split(":")[0].to_i
+          min = row[:sum].split(":")[1].to_i
+          sum = hrs+(min.to_i/60.0).round(2)
+          puts "#{row[:dato]}: #{code}: #{sum}"
+        end
+      end
+    end
+  end
+end

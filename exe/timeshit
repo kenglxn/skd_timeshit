@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/timeshit'
-Timeshit.start(ARGV)
+Timeshit::CLI.start(ARGV)
