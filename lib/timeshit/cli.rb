@@ -15,9 +15,12 @@ module Timeshit
     }.freeze
 
     option :filter
+    option :rate => :number
     desc "read FILE", "read csv file"
     def read(filename)
       filter = options[:filter]
+      rate = options[:rate] || 1297.0
+      total = 0.0
 
       CSV.open(filename, 'r:bom|utf-8', CSV_OPTS) do |csv|
         csv.each do |row|
@@ -30,8 +33,14 @@ module Timeshit
           min = row[:sum].split(":")[1].to_i
           sum = hrs+(min.to_i/60.0).round(2)
           puts "#{row[:dato]}: #{code}: #{sum}"
+          total+=sum
         end
       end
+
+      puts "---"
+      puts "rate: #{rate}"
+      puts "total hrs: #{total.round(2)}"
+      puts "total earnings: #{(total * rate).round(2)}"
     end
   end
 end
