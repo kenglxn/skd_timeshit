@@ -16,7 +16,7 @@ module Timeshit
 
     option :filter
     option :rate => :number
-    desc "read FILE", "read csv file"
+    desc "read FILE", "read exported SKD timereport csv file"
     def read(filename)
       filter = options[:filter]
       rate = options[:rate] || 1297.0
