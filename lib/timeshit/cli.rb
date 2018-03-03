@@ -32,15 +32,18 @@ module Timeshit
           hrs = row[:sum].split(":")[0].to_i
           min = row[:sum].split(":")[1].to_i
           sum = hrs+(min.to_i/60.0).round(2)
-          puts "#{row[:dato]}: #{code}: #{sum}"
+          puts "    #{row[:dato]}:    #{code[/\d+/]}     #{sum}"
           total+=sum
         end
       end
 
-      puts "---"
-      puts "rate: #{rate}"
-      puts "total hrs: #{total.round(2)}"
-      puts "total earnings: #{(total * rate).round(2)}"
+      puts "------------------------------------"
+      puts "             rate: #{rate}"
+      puts "        total hrs: #{total.round(2)}"
+      puts "   total earnings: #{(total * rate).round(2)}"
+      puts "         your cut: #{(total * rate * 0.6).round(2)}"
+      puts "        after tax: #{(total * rate * 0.6 * 0.6).round(2)}"
+      puts "------------------------------------"
     end
   end
 end
