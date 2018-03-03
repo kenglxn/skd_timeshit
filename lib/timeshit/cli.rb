@@ -43,6 +43,7 @@ module Timeshit
       puts "   total earnings: #{(total * rate).round(2)}"
       puts "         your cut: #{(total * rate * 0.6).round(2)}"
       puts "        after tax: #{(total * rate * 0.6 * 0.6).round(2)}"
+      puts "   after vacation: #{(total * rate * 0.6 * 0.6 * 0.88).round(2)}"
       puts "------------------------------------"
     end
   end
