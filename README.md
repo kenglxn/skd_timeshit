@@ -15,7 +15,7 @@ Du kan også filtrere på oppgave, dersom det er ønskelig med --filter option:
 
 ## Demo
 
-
+![Demo gif](https://github.com/kenglxn/timeshit/raw/master/demo.gif "Demo gif")
 
 ## Installation
 
