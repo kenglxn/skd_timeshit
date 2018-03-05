@@ -1,28 +1,34 @@
 # Timeshit
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/timeshit`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'timeshit'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install timeshit
+Leser csv filer eksportert fra TidBank detaljert rapport og skriver ut timeføringsposter i tripletex vennlig format
 
 ## Usage
 
-TODO: Write usage instructions here
+- Først last ned en csv rapport detaljert pr dag.
+- Så les in filen med timeshit
+
+    $ timeshit read <PATH_TO_CSV>
+
+Du kan også filtrere på oppgave, dersom det er ønskelig med --filter option:
+
+    $ timeshit read <PATH_TO_CSV> --filter 4010
+
+## Demo
+
+
+
+## Installation
+
+Build with:
+
+    $ rake build
+    -> timeshit 0.0.1 built to pkg/timeshit-0.0.1.gem.
+
+And then install:
+
+    $ gem install pkg/timeshit-0.0.1.gem
+
+
 
 ## Development
 
@@ -32,4 +38,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/timeshit.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kenglxn/timeshit.
