@@ -19,6 +19,12 @@ Du kan også filtrere på oppgave, dersom det er ønskelig med --filter option:
 
 ## Installation
 
+You can install the prebuilt gem with:
+
+    $ curl -O -J -L https://github.com/kenglxn/timeshit/raw/master/dist/timeshit.gem; gem install timeshit.gem
+
+Or if you want/need to build it yourself:
+
 Clone:
 
     $ git clone git@github.com:kenglxn/timeshit.git
