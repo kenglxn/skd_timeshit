@@ -19,24 +19,26 @@ Du kan også filtrere på oppgave, dersom det er ønskelig med --filter option:
 
 ## Installation
 
-You can install the prebuilt gem with:
+You can install the from rubygems with:
 
-    $ curl -O -J -L https://github.com/kenglxn/timeshit/raw/master/dist/timeshit.gem; gem install timeshit.gem
+    $ gem install timeshit
 
 Or if you want/need to build it yourself:
 
 Clone:
 
-    $ git clone git@github.com:kenglxn/timeshit.git
+    $ git clone https://github.com/kenglxn/timeshit.git
 
 Then build with:
 
+    $ gem install bundler
+    $ bundle install
     $ rake build
-    -> timeshit 0.0.1 built to pkg/timeshit-0.0.1.gem.
+    -> timeshit 0.0.1 built to pkg/timeshit-0.0.2.gem.
 
 And then install:
 
-    $ gem install pkg/timeshit-0.0.1.gem
+    $ gem install pkg/timeshit-0.0.2.gem
 
 
 
